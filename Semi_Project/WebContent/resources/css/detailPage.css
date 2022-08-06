@@ -1,0 +1,223 @@
+
+.inner .search{
+  position: absolute;
+  height: 35px;
+  width: 720px;
+  bottom: 35%;
+  left: 25%;
+  
+}
+header .search .material-icons{
+  font-size: 37px;
+  position: absolute;
+  bottom: -2px;
+  padding-right: 10px;
+}
+header .search #search-button{
+  border-radius: 7px;
+}
+header .search #search-button:focus{
+  border: 3px solid lightsalmon;
+}
+header .search>input{
+  height: inherit;
+  width: 700px;
+  left: inherit;
+}
+header .order{
+  height: 100px;
+  width: 200px;
+  position: absolute;
+  right: 200px;
+  top: 165px;
+}
+header .order #order a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  right: 100px;
+  color: #333;
+  bottom: 40px;
+
+
+}
+header .order #favor a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  color: #333;
+  right: 150px;
+  bottom: 40px;
+}
+/* 상품 상세 */
+
+.detail-top{
+  margin-top: 30px;
+  height: 500px;
+  
+  width: 80%;
+}
+/* 상세 헤어 왼쪽 */
+.detail-top #detail-top-left{
+  display: inline-block;
+  border-right: #333 1px solid;
+  height: inherit;
+  width: 1000px;
+}
+.detail-top #detail-top-left #main{
+  display: block;
+  height: 80%;
+  
+  margin: auto;
+}
+.detail-top #detail-top-left #sub {
+  height: 20%;
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+}
+.detail-top #detail-top-left #sub img{
+  display: inline-block;
+  width: 22%;
+  height: 100%;
+  border: lightblue dashed;
+  border-radius: 5rem;
+
+}
+/* 상세 헤어 오른쪽 */
+.detail-top #detail-top-right{
+  display: inline-block;
+  height: inherit;
+  width: 1000px;
+  position: absolute;
+  padding-bottom: 150px;
+  margin-top: -50px;
+}
+.detail-top #detail-top-right>pre{
+  font-size: 14px;
+  text-align: center;
+  height: 33%;
+  padding-right: 100px;
+  
+}
+
+
+#detail-top-right-bottom{
+  
+  width: 100%;
+  height: 30%;
+  display: inline-block;
+  margin-left: 150px;
+  margin-top: 50px;
+  
+  /* position: absolute; */
+}
+.detail-top #detail-top-right-bottom #buy{
+  position: absolute;
+  font-size: 10px;
+  width: 200px;
+  height: 40px;
+  border-radius: 10%;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  bottom: 130px;
+  background-color: antiquewhite;
+}
+.detail-top #detail-top-right-bottom .order1{
+  
+  border-radius: 10%;
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+
+}
+.detail-top #detail-top-right-bottom .order1>button{
+  
+  border-radius: 10%;
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+.detail-top #detail-top-right-bottom .order2{
+  border-radius: 10%;
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+}
+.detail-top #detail-top-right-bottom .order2>button{
+  
+  border-radius: 10%;
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  margin-top: 100px;
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+
+.detail-top #detail-top-right-bottom #total{
+  font-weight: 1000;
+  
+  
+
+}
+.detail-middle #detail-button{
+  width: 80%;
+  margin: auto;
+}
+.detail-middle #detail-button>button{
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  margin-right: 140px;
+  margin-left: 20px;
+  margin-top: 100px;
+  font-size: 20px;
+  border-radius: 5%;
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+.detail-middle #detail-button>button:hover{
+  color: brown;
+}
+.detail-middle #pr-description,#pr-content,#pr-reviews,#pr-question{
+  margin-top: 50px ;
+  margin-left: auto;
+  margin-right: auto;
+  
+  width: 80%;
+  height: 300px;
+  background-color: antiquewhite;
+  border: solid 1px black;
+  
+}
+#pr-description{
+  background-color: white;
+}
+
+.detail-middle #pr-reviews .review-score{
+  margin-right: 100px;
+  margin-left: 50px;
+  width: 400px;
+  height: 20%;
+  display: inline-block;
+}
+.detail-middle #pr-reviews .review-scor>h3{
+  position: absolute;
+  margin-right: 40px;
+}
+.detail-middle #pr-reviews #stars-view{
+  
+  width: 200px;
+  height: 20%;
+  display: inline-block;
+}
+.detail-middle #pr-reviews #star{
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+

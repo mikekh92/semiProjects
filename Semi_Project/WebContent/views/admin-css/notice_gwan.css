@@ -1,0 +1,110 @@
+html{
+    width:1900px;
+    height:1000px;
+}
+html>div{
+    width: 100%;
+}
+#content_2{
+
+    float:left;
+    width:1500px;
+    height:1000px;
+}
+#content_2>div{
+    float:left;
+}
+
+/*왼쪽여백*/
+#content_2_empty{
+    width:5%;
+    height:100%;
+}
+
+#content_2_1{
+    height:20%;
+    width:95%;
+}
+#content_2_1>h2{
+    margin-top:20px;
+}
+
+/*input bar 시작*/
+#content_2_2{
+    height:10%;
+    width:95%;
+}
+#content_2_2>form>div{
+    width:100%;
+    float:left;
+}
+#content_2_2_1>div{
+    height:100%;
+    float:left;
+}
+#content_2_2 button{
+    width:100px;
+}
+#content_2_2 #select{
+    width:110px;
+    height:40px;
+}
+#content_2_2 #search_user{
+    width:390px;
+    height:40px;
+}
+#search_img{
+    height:30px;
+    width:30px;
+    margin-top: 2px;
+}
+#search_btn{
+    font-weight: bold;
+    line-height: 30px;
+}
+#search_btn * {
+    float:left;
+}
+.col-sm-2,.col-sm-3,.col-sm-5{
+    padding: 0px;
+}
+.col-sm-2{
+    width:160px;
+}
+.col-sm-3{
+    width:150px;
+}
+.col-sm-5{
+    width:400px;
+}
+/*input bar 끝*/
+
+/*회원 명 수 및 버튼 시작*/
+#content_2_3,#content_2_4{
+    width:47.5%;
+    height:6%;
+}
+#content_2_4{
+    text-align: right;
+}
+.btn-warning{
+    color:white;
+    font-weight: bold;
+    background-color: orange;
+}
+/*회원 명 수 및 버튼 끝*/
+
+/*테이블 시작*/
+
+/*테이블 끝*/
+
+/*글 목록 시작*/
+#content_2_6{
+    height:5%;
+    width:95%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*글 목록 끝*/

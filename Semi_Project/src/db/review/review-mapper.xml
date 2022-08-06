@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+
+<properties>
+	<entry key="selectListCount">
+	 SELECT COUNT(*) COUNT
+	 FROM REVIEW
+	 WHERE REVIEW_STATUS='Y'
+	</entry>
+	<entry key="selectReviewList">
+		SELECT * 
+	    		FROM(
+			        SELECT ROWNUM RNUM,A.*
+			        FROM 
+			        (
+			            SELECT REVIEW_NO,REVIEW_PHOTO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_RESULT,REVIEW_DATE
+						 FROM REVIEW
+						 LEFT JOIN MEMBER USING (USER_NO)
+						 LEFT JOIN PRODUCT USING (PRO_NO)
+						 WHERE REVIEW_STATUS = 'Y'
+						 ORDER BY REVIEW_DATE DESC 
+			            )   A
+			        )
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		<entry key="selectReviewListUser">
+		SELECT REVIEW_NO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_DATE,REVIEW_VIEWNO
+		FROM REVIEW
+		JOIN MEMBER USING(USER_NO)
+		JOIN PRODUCT USING(PRO_NO)
+		WHERE REVIEW_STATUS = 'Y'
+		AND PRO_NO = ?
+	</entry>
+		<entry key="insertReview">
+		INSERT INTO REVIEW(REVIEW_NO,REVIEW_TITLE,REVIEW_CONTENT,USER_NO,PRO_NO)
+		VALUES (SEQ_RNO.NEXTVAL,?,?,?,?)		
+	</entry>
+	<entry key="selectReview">
+		SELECT REVIEW_NO
+			  ,REVIEW_PHOTO
+			  ,REVIEW_TITLE
+			  ,PRO_NAME
+			  ,USER_ID
+			  ,REVIEW_DATE
+			  ,REVIEW_RESULT
+			  ,REVIEW_CONTENT
+			  ,REVIEW_ANSWER
+		FROM REVIEW
+		LEFT JOIN MEMBER USING (USER_NO)
+		LEFT JOIN PRODUCT USING (PRO_NO)	  
+		WHERE REVIEW_NO= ?
+		AND REVIEW_STATUS = 'Y' 
+	</entry>
+	<entry key="insertReviewAnswer">
+		UPDATE REVIEW
+    		SET REVIEW_ANSWER = ?
+    		WHERE REVIEW_NO = ?
+	</entry>
+	<entry key="updateReviewAnswer">
+		UPDATE REVIEW
+			SET REVIEW_RESULT='처리'
+			WHERE REVIEW_NO= ?
+	</entry>
+	<entry key="updateReview">
+		UPDATE REVIEW
+			SET REVIEW_ANSWER = ?
+		WHERE REVIEW_NO = ?
+		AND REVIEW_STATUS = 'Y'	
+	</entry>
+	<entry key="selectDelete">
+		UPDATE REVIEW
+			SET REVIEW_STATUS = 'N'
+		WHERE REVIEW_NO = ?	
+	</entry>
+	<entry key="searchProduct">
+	SELECT * 
+    		FROM(
+		        SELECT ROWNUM RNUM,A.*
+		        FROM 
+		        (
+		            SELECT REVIEW_NO,REVIEW_PHOTO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_RESULT,REVIEW_DATE
+					 FROM REVIEW
+					 LEFT JOIN MEMBER USING (USER_NO)
+					 LEFT JOIN PRODUCT USING (PRO_NO)
+					 WHERE REVIEW_STATUS = 'Y'
+					 AND PRO_NAME LIKE '%'||?||'%'
+					 ORDER BY REVIEW_DATE DESC 
+		            )   A
+		        )
+		WHERE RNUM BETWEEN ? AND ?	
+	</entry>
+	<entry key="searchWriter">
+	SELECT * 
+    		FROM(
+		        SELECT ROWNUM RNUM,A.*
+		        FROM 
+		        (
+		            SELECT REVIEW_NO,REVIEW_PHOTO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_RESULT,REVIEW_DATE
+					 FROM REVIEW
+					 LEFT JOIN MEMBER USING (USER_NO)
+					 LEFT JOIN PRODUCT USING (PRO_NO)
+					 WHERE REVIEW_STATUS = 'Y'
+					 AND USER_ID LIKE '%'||?||'%'
+					 ORDER BY REVIEW_DATE DESC 
+		            )   A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchTitle">
+	SELECT * 
+    		FROM(
+		        SELECT ROWNUM RNUM,A.*
+		        FROM 
+		        (
+		            SELECT REVIEW_NO,REVIEW_PHOTO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_RESULT,REVIEW_DATE
+					 FROM REVIEW
+					 LEFT JOIN MEMBER USING (USER_NO)
+					 LEFT JOIN PRODUCT USING (PRO_NO)
+					 WHERE REVIEW_STATUS = 'Y'
+					 AND REVIEW_TITLE LIKE '%'||?||'%'
+					 ORDER BY REVIEW_DATE DESC 
+		            )   A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchResult">
+	SELECT * 
+    		FROM(
+		        SELECT ROWNUM RNUM,A.*
+		        FROM 
+		        (
+		            SELECT REVIEW_NO,REVIEW_PHOTO,PRO_NAME,USER_ID,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_RESULT,REVIEW_DATE
+					 FROM REVIEW
+					 LEFT JOIN MEMBER USING (USER_NO)
+					 LEFT JOIN PRODUCT USING (PRO_NO)
+					 WHERE REVIEW_STATUS = 'Y'
+					 AND REVIEW_RESULT LIKE '%'||?||'%'
+					 ORDER BY REVIEW_DATE DESC 
+		            )   A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchProductCount">
+		SELECT COUNT(*) COUNT
+		FROM REVIEW R,PRODUCT P
+		WHERE R.PRO_NO=P.PRO_NO 
+		AND PRO_NAME LIKE '%'||?||'%'	
+	</entry>
+	<entry key="searchWriterCount">
+		SELECT COUNT(*) COUNT
+		FROM REVIEW R,MEMBER M
+		WHERE R.USER_NO=M.USER_NO
+		AND USER_ID LIKE '%'||?||'%'	
+	</entry>
+	<entry key="searchTitleCount">
+		SELECT COUNT(*) COUNT
+		FROM REVIEW
+		WHERE REVIEW_TITLE LIKE '%'||?||'%'
+	</entry>
+	<entry key="searchResultCount">
+		SELECT COUNT(*) COUNT
+		FROM REVIEW
+		WHERE REVIEW_RESULT LIKE '%'||?||'%' 
+	</entry>
+</properties>

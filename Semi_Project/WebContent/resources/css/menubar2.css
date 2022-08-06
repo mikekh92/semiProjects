@@ -1,0 +1,122 @@
+
+/* common */
+
+body{
+  color: #333;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: sans-serif;
+  
+  left: 34px;
+}
+
+
+/* header */
+header{
+  width:95%;
+  height: 250px;
+  margin:auto;
+  position: relative;
+  top: 0%;
+}
+header .inner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin:auto;
+  
+}
+header .inner .logo{
+  height: 40px;
+  position: absolute;
+  top: 40px;
+  
+}
+header .inner .logo img{
+  height: 80px;
+  position: absolute;
+  
+}
+header .top-navi{
+  height: 80px;
+  right: 0px;
+  top: 30px;
+  position: absolute;
+  width: 550px;
+  right: 30px;
+}
+header .top-navi ul.navi {
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  
+}
+header .top-navi ul.navi li{
+  list-style: none;
+  font-size: 10px;
+  width: 50%;
+  display: inline-block;
+  height: 40px;
+  width: 23%;
+  
+}
+header .top-navi ul.navi li::before{
+  content: "";
+  position: absolute;
+
+}
+header .top-navi ul.navi li a{
+  font-size: 16px;
+  text-decoration-line: none;
+  margin: 5px;
+  
+}
+header .top-navi ul.navi li a:hover{
+  
+  color: brown
+}
+.inner .search{
+  position: absolute;
+  height: 35px;
+  width: 720px;
+  
+  left: 25%;
+  
+}
+header .search .material-icons{
+  font-size: 37px;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+}
+header .search #search-button{
+  border-radius: 7px;
+}
+header .search #search-button:focus{
+  border: 3px solid lightsalmon;
+}
+header .search>input{
+  height: inherit;
+  width: 700px;
+  left: inherit;
+}
+header .order{
+  height: 50px;
+  width: 100px;
+  position: absolute;
+  right: 200px;
+  top: 165px;
+}
+header .order #order a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  right: 100px;
+  color: #333;
+
+
+}
+header .order #favor a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  color: #333;
+}

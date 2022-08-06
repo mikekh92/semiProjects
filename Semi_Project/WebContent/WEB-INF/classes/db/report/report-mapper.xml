@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectReport">
+	SELECT COUNT(*) "COUNT"
+	FROM REPORT
+</entry>
+<entry key="selectRepList">
+		SELECT *
+    FROM(
+    SELECT ROWNUM R, A.*
+    FROM(
+    SELECT REP_NO, REP_ENTERDATE, REP_TITLE, REP_CONTENT, REP_USER_ID, REP_REPOTER, REP_STATUS
+	FROM REPORT
+    ORDER BY REP_ENTERDATE DESC) A)
+    WHERE R BETWEEN ? AND ?
+</entry>
+<entry key="selectReportt">
+	SELECT REP_NO, REP_ENTERDATE, REP_TITLE, REP_CONTENT, REP_USER_ID, REP_REPOTER, REP_STATUS
+	FROM REPORT
+	WHERE REP_NO = ?
+</entry>
+
+<entry key="increaseRPC">
+	UPDATE MEMBER
+	SET USER_RPC=USER_RPC+1
+	WHERE USER_ID = ?
+</entry>
+
+<entry key="completeReport">
+	UPDATE REPORT
+	SET REP_STATUS = 'Y'
+	WHERE REP_NO = ?
+</entry>
+<entry key="selectRPC">
+	SELECT USER_RPC
+	FROM MEMBER
+	WHERE USER_ID = ?
+
+</entry>
+<entry key="banUpdate">
+	UPDATE MEMBER
+	SET BAN_DATE = NVL2(BAN_DATE,BAN_DATE,SYSDATE) + ?
+	WHERE USER_ID = ?
+</entry>
+<entry key="banUser">
+	UPDATE MEMBER
+	SET U_STATUS='U'
+	WHERE USER_ID = ?
+</entry>
+<entry key="ajaxDeleteReport">
+	UPDATE REPORT
+	SET REP_STATUS = 'Y'
+	WHERE REP_NO = ?
+</entry>
+
+<entry key="searchReportId">
+	SELECT *
+	FROM(
+	SELECT ROWNUM R, A.*
+	FROM(
+	SELECT REP_NO, REP_ENTERDATE, REP_TITLE, REP_CONTENT, REP_USER_ID, REP_REPOTER, REP_STATUS
+	FROM REPORT
+	WHERE REP_USER_ID = ?) A)
+	WHERE R BETWEEN ? AND ?
+</entry>
+
+<entry key="searchReporterId">
+	SELECT *
+	FROM(
+	SELECT ROWNUM R, A.*
+	FROM(
+	SELECT REP_NO, REP_ENTERDATE, REP_TITLE, REP_CONTENT, REP_USER_ID, REP_REPOTER, REP_STATUS
+	FROM REPORT
+	WHERE REP_REPOTER = ?) A)
+	WHERE R BETWEEN ? AND ?
+</entry>
+
+<entry key="searchReportCountId">
+	SELECT COUNT(*) "COUNT"
+	FROM REPORT
+	WHERE REP_USER_ID = ?
+</entry>
+
+<entry key="searchReporterCountId">
+	SELECT COUNT(*) "COUNT"
+	FROM REPORT
+	WHERE REP_REPOTER = ?
+</entry>
+
+<entry key="ajaxReportUuser">
+	INSERT INTO REPORT(REP_NO, REP_ENTERDATE, REP_TITLE, REP_CONTENT, REP_USER_ID, REP_REPOTER, REP_STATUS)
+	VALUES(SEQ_RENO.NEXTVAL, SYSDATE, '홍보용 리뷰입니다.', '홍보용 리뷰가 올려져 있습니다.', ?, ?, 'N')
+</entry>
+</properties>

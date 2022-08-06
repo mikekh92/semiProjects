@@ -1,0 +1,219 @@
+
+/* common */
+
+body{
+  color: #333;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: sans-serif;
+  
+  left: 34px;
+}
+
+
+/* header */
+header{
+  width:95%;
+  height: 250px;
+  margin:auto;
+  position: relative;
+  top: 0%;
+}
+header .inner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin:auto;
+  
+}
+header .inner .logo{
+  height: 40px;
+  position: absolute;
+  top: 40px;
+  
+}
+header .inner .logo img{
+  height: 80px;
+  position: absolute;
+  
+}
+header .top-navi{
+  height: 80px;
+  right: 0px;
+  top: 30px;
+  position: absolute;
+  width: 400px;
+  right: 30px;
+}
+header .top-navi ul.navi {
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  
+}
+header .top-navi ul.navi li{
+  list-style: none;
+  font-size: 10px;
+  width: 50%;
+  display: inline-block;
+  height: 40px;
+  width: 23%;
+  
+}
+header .top-navi ul.navi li::before{
+  content: "";
+  position: absolute;
+
+}
+header .top-navi ul.navi li a{
+  font-size: 16px;
+  text-decoration-line: none;
+  margin: 5px;
+  
+}
+header .top-navi ul.navi li a:hover{
+  
+  color: brown
+}
+header .search{
+  position: absolute;
+  height: 35px;
+  width: 700px;
+  bottom: 50px;
+  left: 21%;
+  
+}
+header .search .material-icons{
+  font-size: 37px;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+}
+header .search #search-button{
+  border-radius: 7px;
+}
+header .search #search-button:focus{
+  border: 3px solid lightsalmon;
+}
+header .search>input{
+  height: inherit;
+  width: 700px;
+  left: inherit;
+}
+header .order{
+  height: 50px;
+  width: 100px;
+  position: absolute;
+  right: 200px;
+  top: 165px;
+}
+header .order #order a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  right: 100px;
+  color: #333;
+
+
+}
+header .order #favor a .material-symbols-outlined{
+  font-size: 37px;
+  position: absolute;
+  color: #333;
+}
+
+.navigator{
+  margin-top: 40px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+}
+#navi{
+  list-style-type: none;
+  height: 100%;
+  display:tabel-cell;
+}
+#navi>li{
+
+  /*방법 1 + #navi a{ transform : scale(1); 추가하기}*/
+  /* float: left; */
+  /* height: 100%;
+  width: 20%;
+  text-align: center; */
+
+  /*방법 2*/
+  display: inline-block;
+  width: 200px;
+  height: 42px;
+  text-align: center;
+  margin-right: 70px
+  ;/*inline요소들의 수직정렬 기준*/
+  background-color: lightskyblue;
+  border: 1px solid;
+  margin-left: 20px;
+  vertical-align:top;
+  border-radius: 7%;
+}
+#navi a{
+  /* border: 1px solid red; */
+  color: #333;
+  text-decoration: none;
+  font-size: 23px;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  height: inherit;
+  
+  
+
+   /*transform: scale(1); */
+}
+#navi a:hover{
+  font-size: 24px;
+  color: brown;
+}
+#navi>li>ul{
+  position: absolute;
+  
+  list-style-type: none;
+  padding: 0px;
+  font-size: 40px;
+  text-align: center;
+  display: none;
+  width: inherit;
+  height: 300px;
+  margin-bottom: 30px;
+  z-index: 2;
+  
+}
+#navi>li>ul>li{
+  background-color: lightsteelblue;
+  border: 1px solid black;
+  margin: 10px 0;
+  border-radius: 5%;
+  vertical-align:top;
+  z-index: 2;
+  
+}
+#navi>li>ul a{
+  
+  font-size: 23px;
+  margin: 30px 0;
+  text-align: center;
+  
+}
+
+
+#navi>li>a:hover+ul{
+  /* 평소에는 안보여지다가 마우스가 올라가는 순간 펼쳐지는 효과 부여 2단계 */
+  display : block;
+ /* 메인메뉴에만 마우스가 올라갈 때 유지가 되므로 */
+
+}
+#navi>li>ul:hover{
+  display: block;
+}
+#navi>li>img:hover{
+  display: block;
+}
+

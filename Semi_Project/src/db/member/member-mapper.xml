@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	
+
+
+
+
+
+
+
+
+
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID= ?
+		AND USER_PW= ?
+		AND STATUS ='Y'
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<entry key="insertMember">
+		INSERT INTO MEMBER(USER_NO,
+						   USER_ID,
+						   USER_PW,
+						   USER_NAME,
+						   PHONE,
+						   EMAIL,
+						   ADDRESS)
+						   VALUES
+						   (SEQ_UNO.NEXTVAL,
+						   ?,
+						   ?,
+						   ?,
+						   ?,
+						   ?,
+						   ?)
+	</entry>
+	
+	<entry key="MemberAddress">
+	
+	
+	SELECT POST_CODE,ROAD_ADDRESS,JIBUN_ADDRESS,
+        DETAIL_ADDRESS,EXTRA_ADDRESS
+	FROM MEMBER M ,ADDRESS A
+	WHERE M.USER_ID = A.USER_ID AND A.USER_ID = ?
+	
+	
+	
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	<entry key="updateMember">
+		UPDATE MEMBER
+		SET USER_NAME = ?
+    		,PHONE = ?
+    		,EMAIL = ?
+    		,ADDRESS = ?
+		WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="selectMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+		AND STATUS='Y'
+	</entry>
+	
+	
+	
+	<entry key="updatePwMember">
+		UPDATE MEMBER
+		SET USER_PW = ?
+		WHERE USER_ID = ?	
+		AND USER_PW = ?
+	</entry>
+	
+	
+	
+	<entry key="deleteMember">
+		UPDATE MEMBER
+		SET STATUS='N'
+		WHERE USER_ID = ?
+		AND USER_PW = ?
+	</entry>
+	
+
+
+
+
+
+
+
+
+
+
+
+</properties>

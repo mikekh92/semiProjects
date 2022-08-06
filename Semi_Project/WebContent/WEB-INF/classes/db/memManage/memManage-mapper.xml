@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectMemManage">
+	SELECT COUNT(*) "COUNT"
+	FROM MEMBER
+</entry>
+<entry key="selectMemList">
+	SELECT *
+	FROM(
+	SELECT ROWNUM R, A.*
+	FROM(
+	SELECT USER_NO,USER_ID,USER_NAME,USER_BIRTH,GENDER,EMAIL,PHONE,ENTERDATE,U_STATUS,USER_RPC
+	FROM MEMBER)A )
+	WHERE R BETWEEN ? AND ?
+</entry>
+<entry key="selectMember">
+	SELECT USER_NO,USER_ID,USER_NAME,USER_BIRTH,GENDER,EMAIL,PHONE,ENTERDATE,U_STATUS,USER_RPC
+	FROM MEMBER
+	WHERE USER_NO = ?
+</entry>
+
+<entry key="ajaxDeleteUser">
+	UPDATE MEMBER
+	SET U_STATUS = 'N'
+	WHERE USER_NO = ? AND U_STATUS = 'Y'
+</entry>
+
+<entry key="searchUserId">
+	SELECT *
+	FROM(
+	SELECT ROWNUM R, A.*
+	FROM(
+	SELECT USER_NO,USER_ID,USER_NAME,USER_BIRTH,GENDER,EMAIL,PHONE,ENTERDATE,U_STATUS,USER_RPC
+	FROM MEMBER
+	WHERE USER_ID = ?) A)
+	WHERE R BETWEEN ? AND ?
+</entry>
+<entry key="searchUserName">
+	SELECT *
+	FROM(
+	SELECT ROWNUM R, A.*
+	FROM(
+	SELECT USER_NO,USER_ID,USER_NAME,USER_BIRTH,GENDER,EMAIL,PHONE,ENTERDATE,U_STATUS,USER_RPC
+	FROM MEMBER
+	WHERE USER_NAME = ?) A)
+	WHERE R BETWEEN ? AND ?
+</entry>
+
+
+<entry key="searchUserCountId">
+	SELECT COUNT(*) "COUNT"
+	FROM MEMBER
+	WHERE USER_ID = ?
+</entry>
+<entry key="searchUserCountName">
+	SELECT COUNT(*) "COUNT"
+	FROM MEMBER
+	WHERE USER_NAME = ?
+</entry>
+</properties>

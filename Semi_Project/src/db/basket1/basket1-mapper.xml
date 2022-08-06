@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key = "selectBasket1List">
+		SELECT ROWNUM R, A.*
+		FROM(
+		SELECT B.PRO_NO, PRO_NAME, PRO_PRICE, PAY_ORDERNO
+		FROM BASKET B, MEMBER M, PRODUCT P
+		WHERE B.USER_NO = M.USER_NO AND B.PRO_NO = P.PRO_NO AND B.USER_NO = ? AND B.BA_STATUS='N') A
+	</entry>
+	<entry key = "checkOrder">
+		SELECT COUNT(*) "COUNT"
+		FROM ORDERS
+		WHERE ORDER_ONO = ?
+	
+	</entry>
+	<entry key = "insertOrder">
+		INSERT INTO ORDERS(ORDER_NO, USER_NO, ORDER_ONO, PRO_NO, PAY_ORDERNO, PRO_PRICE, ORDER_DATE)
+		VALUES(SEQ_ORNO.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE)
+	</entry>
+	
+	<entry key = "deleteBasket1">
+		DELETE FROM BASKET
+		WHERE USER_NO = ? AND BA_STATUS = 'N'
+	</entry>
+	
+	<entry key = "confirmBasket">
+		UPDATE BASKET
+		SET BA_STATUS = 'N', PAY_ORDERNO = ?
+		WHERE BASKET_NO = ?	
+	
+	</entry>
+	
+	<entry key="resetBasket">
+		UPDATE BASKET
+		SET BA_STATUS='Y'
+		WHERE USER_NO = ?
+	
+	</entry>
+	
+	<entry key="insertBuy">
+		INSERT INTO BASKET(BASKET_NO, USER_NO, PRO_NO, PAY_ORDERNO, BA_STATUS)
+		VALUES(SEQ_BANO.NEXTVAL,?,?,?,'N')
+	
+	</entry>
+</properties>

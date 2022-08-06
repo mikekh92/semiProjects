@@ -1,0 +1,140 @@
+.middle-bottom{
+  width: 100%;
+  height: 700px;
+  position: absolute;
+  margin: 0 50px;
+  
+}
+.middle-bottom .middle{
+  width: 100%;
+  height: 300px;
+  position: relative;
+  left: 50px;
+  z-index: -1;
+}
+.middle #pop-pr{
+  width: 40%;
+  height: 300px;
+  display: inline-block;
+  z-index: -1;
+}
+.middle #pop-pr img{
+  padding: 30px 70px;
+  width: 100%;
+  height: 300px;
+  z-index: -1;
+}
+.middle #notice{
+  
+  width: 8%;
+  right: 150px;
+  height: 400px;
+  text-align: center;
+  font-size: 24px;
+  position: fixed;
+  display: inline-block;
+  z-index: 2;
+  top: 450px;
+  border: 1px solid black;
+}
+.middle #notice #content{
+  background-color: aliceblue;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  border-top:  1px solid black;
+  text-align: center;
+  display: inline-block;
+  right: 0px;
+  
+  
+}
+.middle #notice #content li{
+  list-style: none;
+  font-size: 16px;
+  width: 100%;
+  height: 33%;
+  
+  
+}
+.middle #notice a{
+  z-index: 2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.middle-bottom .pop-gym{
+  
+  width: 1400px;
+  height: 100%;
+  margin: 15px 30px;
+  position: absolute;
+  top: 330px;
+  
+
+  
+}
+.middle-bottom .pop-gym img{
+  height: 200px;
+  width: 90%;
+  margin: 5px;
+}
+.pop-gym #gym1-text{
+  width: 90%;
+  margin: 5px;
+}
+.pop-gym #gym1{
+  width: 33%;
+  float: left;
+  height: inherit;
+
+}
+.pop-gym #gym2{
+  width: 33%;
+  float: left;
+  height: inherit
+}
+.pop-gym #gym3{
+  width: 33%;
+  float: left;
+  height: inherit;
+}
+#footer{
+  width: 1400px;
+  height: 300px;
+  margin: 15px 30px;
+  position: absolute;
+  top: 900px;
+}
+#footer>div{
+  width: 100%;
+}
+#footer_1{
+  height: 30px;
+  padding-top: 5px;
+}
+#footer_2{
+  height: 80%;
+}
+#footer_2>p{
+  width: 100%;
+  /* border: 1px solid red; */
+  margin: 0;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+#p1{
+  height: 80%;
+  padding: 5px 40px;/*상하/좌우*/
+}
+#p2{
+  height: 20%;
+  text-align: center;
+}
+#footer_1>a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 40px;
+}

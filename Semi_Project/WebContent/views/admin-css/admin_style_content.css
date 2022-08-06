@@ -1,0 +1,41 @@
+#content_1{
+    float:left;
+    height:1000px;
+    width:180px;
+    background-color:rgb(155, 144, 144);
+}
+.triangle{
+    width:25px;
+    height:25px;
+}
+.left-menu>a{
+    text-decoration: none;
+    font-size:18pt;
+    font-weight: bold;
+}
+.sub-menu>a{
+    text-decoration: none;
+    font-size:13pt;
+    font-weight: bold;
+    display: none;
+}
+#content_1>table{
+    width:100%;
+}
+#content_1_empty{
+    height:30px;
+}
+tr{
+    margin-top: 30px;
+    line-height: 40px;
+}
+td{
+    text-align: center;
+}
+a{
+    color:white;
+}
+a:hover{
+    color:yellow;
+}
+

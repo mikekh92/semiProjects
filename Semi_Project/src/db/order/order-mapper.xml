@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+
+<properties>
+	<entry key="selectListCount">
+	 SELECT COUNT(*) COUNT
+	 FROM (SELECT DISTINCT ORDER_ONO FROM ORDERS)
+	</entry>
+	<entry key="selectOrderList">
+	 SELECT *
+	 FROM(
+	 	SELECT ROWNUM R, A.*
+	 	FROM(
+	 		SELECT ORDER_ONO,ORDER_NO,ORDER_DATE,USER_ID,PRO_NAME,O.PRO_PRICE
+	 		FROM ORDERS O, MEMBER M, PRODUCT P
+	 		WHERE O.ORDER_NO = M.USER_NO AND O.PRO_NO = P.PRO_NO AND ORDER_NO IN (SELECT MIN(ORDER_NO) FROM ORDERS GROUP BY ORDER_ONO) 
+	 		ORDER BY ORDER_NO) A)
+	 WHERE R BETWEEN ? AND ?
+	</entry>
+</properties>

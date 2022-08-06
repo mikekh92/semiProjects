@@ -1,0 +1,30 @@
+html{
+    width:1900px;
+    height:1000px;
+}
+html>div{
+    width: 100%;
+}
+#content_2{
+
+    float:left;
+    width:1500px;
+    height:1000px;
+}
+#content_2>div{
+    float:left;
+}
+
+/*왼쪽여백*/
+#content_2_empty{
+    width:5%;
+    height:100%;
+}
+
+#content_2_1{
+    height:15%;
+    width:95%;
+}
+#content_2_1>h2{
+    margin-top:20px;
+}

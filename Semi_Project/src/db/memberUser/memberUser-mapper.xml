@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="loginMemberUser">
+	SELECT USER_NO, USER_ID, USER_NAME, EMAIL, PHONE, U_STATUS, BAN_DATE
+	FROM MEMBER
+	WHERE USER_ID = ? AND USER_PW = ?
+</entry>
+<entry key="updateConnect">
+	UPDATE MEMBER
+	SET CONNECT_DATE = SYSDATE
+	WHERE USER_ID = ? AND USER_PW = ?
+</entry>
+
+<entry key="ajaxConfirmSign">
+	SELECT COUNT(*) "COUNT"
+	FROM MEMBER
+	WHERE USER_ID = ? OR EMAIL = ? OR PHONE = ?
+
+</entry>
+
+<entry key="insertMemberUser">
+	INSERT INTO MEMBER(USER_NO, USER_ID, USER_PW, USER_NAME, USER_BIRTH, GENDER, EMAIL, PHONE, ENTERDATE)
+	VALUES (SEQ_MNO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE)
+</entry>
+
+<entry key="insertAddress">
+	INSERT INTO ADDRESS(USER_ID, POST_CODE, ROAD_ADDRESS, JIBUN_ADDRESS, DETAIL_ADDRESS, EXTRA_ADDRESS)
+	VALUES (?,?,?,?,?,?)
+
+</entry>
+
+<entry key="returnMember">
+	UPDATE MEMBER
+	SET U_STATUS = 'Y', CONNECT_DATE = SYSDATE
+	WHERE USER_NO = ?
+</entry>
+
+<entry key="banManage">
+	UPDATE MEMBER
+	SET U_STATUS = 'Y', BAN_DATE = NULL
+	WHERE TO_CHAR(SYSDATE, 'YYYY/MM/dd') >= TO_CHAR(BAN_DATE, 'YYYY/MM/dd') AND U_STATUS='S'
+
+</entry>
+
+<entry key="dormancyManage">
+	UPDATE MEMBER
+	SET U_STATUS = 'H'
+	WHERE CONNECT_DATE IS NOT NULL AND TO_CHAR(SYSDATE, 'YYYY/MM/dd') <![CDATA[>=]]> TO_CHAR((CONNECT_DATE+365), 'YYYY/MM/dd') AND U_STATUS='Y'
+
+</entry>
+</properties>

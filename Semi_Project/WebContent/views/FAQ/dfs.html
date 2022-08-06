@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    table{
+          font-size: 18px;
+          text-align: center;
+          vertical-align: middle;
+          display: table;
+    }
+    tfoot{
+        font-size: 23px;
+    }
+    table th{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="border: 1px solid black;">
+    <div  style="display: inline;">
+        <h2  style="display: inline-block;">ORDER / PAYMENT</h2>
+    </div>
+    <div style="float: right; margin-top: 25px;">
+        장바구니 ▶ 주문서 ▶ 주문완료
+    </div>
+     <hr style="height: 2px; background-color: lightgray;">         
+    <table class="table" style="height: 700px; vertical-align: middle;">
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>전체</th>
+                <th>사진</th>
+                <th>상품명</th>
+                <th>판매가</th>
+                <th>수량</th>
+                <th>주문금액</th>
+            </tr>
+      </thead>
+        <tbody>
+            <tr >
+                <td style="vertical-align: middle;"><input type="checkbox"></td>
+                <td style="vertical-align: middle;">1</td>
+                <td style="vertical-align: middle;">
+                    <div class="image">
+                    </div>
+                </td>
+                <td style="vertical-align: middle;">John</td>
+                <td style="vertical-align: middle;">John</td>
+                <td style="vertical-align: middle;">John</td>
+                <td style="vertical-align: middle;">John</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>1</td>
+                <td>
+                    <div class="image">
+
+                    </div>
+                </td>
+                <td>John</td>
+                <td>John</td>
+                <td>John</td>
+                <td>John</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>1</td>
+                <td>
+                    <div class="image">
+
+                    </div>
+                </td>
+                <td>John</td>
+                <td>John</td>
+                <td>John</td>
+                <td>John</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr align="right">
+                <td colspan="9">상품금액 - 할인 금액 = ?</td>
+            </tr>
+        </tfoot>
+    </table>
+  </div>
+</body>
+</html>

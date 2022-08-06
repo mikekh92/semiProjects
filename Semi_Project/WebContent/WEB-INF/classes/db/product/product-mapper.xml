@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectCategory">
+	SELECT *
+	FROM CATEGORY
+	WHERE MOD(CATE_NO,10)=0 AND CATE_NO<![CDATA[<]]>100
+	</entry>
+	
+	<entry key="selectsCategory">
+	SELECT *
+	FROM CATEGORY
+	WHERE MOD(CATE_NO,10)!=0
+    AND CATE_NO BETWEEN ? AND ?+10 AND CATE_NO<![CDATA[<]]>100
+	</entry>
+
+	<entry key="selectList">
+		SELECT*
+	   		 FROM(
+	       		 SELECT ROWNUM RNUM,A.*
+	       		 FROM
+	        		(
+		            SELECT PRO_NO,PRO_NAME,PRO_CODE,PRO_MAKER,PRO_PRICE,PRO_AMOUNT,PRO_STATUS,SELL_STAT
+		            FROM PRODUCT
+		            ORDER BY PRO_NO DESC
+	            	) A
+	        	)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectListCount">
+	SELECT COUNT(*) COUNT
+	FROM PRODUCT
+	</entry>
+	
+	
+	<entry key="insertProduct">
+	INSERT INTO PRODUCT(
+                        PRO_NO,
+                        PRO_NAME,
+                        PRO_PRICE,
+                        PRO_CODE,
+                        PRO_MAKER,
+                        PRO_DES,
+                        CATE_BNO,
+                        CATE_SNO,
+                        PRO_SIZE,
+                        PRO_AMOUNT,
+                        PRO_LEVEL,
+                        DELIVERY_PRICE
+                        )
+		VALUES(
+		      SEQ_PNO.NEXTVAL,
+		      ?,
+              ?,
+		      ?,
+		      ?,
+              ?,
+              ?,
+              ?,
+              ?,
+              ?,
+              ?,
+              2500
+		      )
+	</entry>
+	
+	<entry key="insertAttachment">
+		INSERT INTO ATTACHMENT(
+		                       FILE_NO,
+		                       REF_PNO,
+		                       ORIGIN_NAME,
+		                       CHANGE_NAME,
+		                       FILE_PATH
+		                       )
+		VALUES(
+		       SEQ_FNO.NEXTVAL,
+		       SEQ_PNO.CURRVAL,
+		       ?,
+		       ?,
+		       ?
+		       )
+	</entry>
+	
+	<entry key="deleteProduct">
+		UPDATE PRODUCT 
+		SET PRO_STATUS='Y',
+		SELL_STAT='N'
+		WHERE PRO_NO=?
+	</entry>
+	
+	<entry key ="selectDetail">
+	SELECT 
+			PRO_NO,
+			PRO_NAME,
+			PRO_CODE,
+			PRO_MAKER,
+            PRO_DES,
+			CATE_BNO,
+			CATE_SNO,
+			PRO_SIZE,
+			PRO_PRICE,
+			PRO_AMOUNT,
+			LEVEL_NAME,
+			PRO_STATUS,
+			SELL_STAT
+	FROM PRODUCT
+	JOIN PRODUCT_LEVEL USING (PRO_LEVEL)
+	WHERE PRO_NO=?
+	</entry>
+	
+	<entry key = "selectAttachmentList">
+	SELECT ORIGIN_NAME
+	FROM ATTACHMENT
+	WHERE REF_PNO=?
+	</entry>
+	
+	<entry key = "selecCategory">
+	SELECT * 
+	FROM CATEGORY
+	WHERE CATE_NO=?
+	</entry>
+	
+	<entry key ="updateProduct">
+	UPDATE PRODUCT SET 
+						PRO_NAME = ?,
+						PRO_PRICE = ?,
+						PRO_CODE = ?,
+						PRO_MAKER = ?,
+						PRO_DES = ?,
+						CATE_BNO = ?,
+						CATE_SNO = ?,
+						PRO_SIZE = ?,
+						PRO_AMOUNT = ?,
+						PRO_LEVEL =?
+	WHERE PRO_NO = ?
+	</entry>
+	
+	<entry key = "dropAttachment">
+	DELETE FROM ATTACHMENT 
+	WHERE REF_PNO=?
+	</entry>
+	
+	<entry key = "dropProduct">
+	DELETE FROM PRODUCT 
+	WHERE PRO_NO=?
+	</entry>
+	
+	<entry key="reSellProduct">
+		UPDATE PRODUCT 
+		SET PRO_STATUS='N',
+		SELL_STAT='Y'
+		WHERE PRO_NO=?
+	</entry>
+	
+	<entry key="selectSearchList">
+		SELECT*
+	   		FROM(
+	    	SELECT ROWNUM RNUM,A.*
+	        FROM
+	        	(
+		         SELECT PRO_NO,PRO_NAME,PRO_CODE,PRO_MAKER,PRO_PRICE,PRO_AMOUNT,PRO_STATUS,SELL_STAT
+		         FROM PRODUCT
+                 WHERE INSTR(PRO_NAME,?)>0
+		         ORDER BY PRO_NO DESC
+	           	) A
+	    )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectSearchListCount">
+		SELECT COUNT(*) COUNT
+		FROM PRODUCT
+		WHERE INSTR(PRO_NAME,?)>0
+	</entry>
+		<entry key = "CrawlingInsertPro">
+		INSERT INTO PRODUCT(PRO_NO, PRO_NAME, PRO_PRICE, CATE_BNO, CATE_SNO, PRO_STATUS,SELL_STAT,PRO_IMAGE)
+		VALUES(SEQ_PNO.NEXTVAL,?,?,10,11,'N','Y',?)
+	
+	
+	</entry>
+	<!-- SOCCER 총 게시글 개수 -->
+	<entry key="selectSoccerCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	</entry>
+	
+	<!-- SOCCER 총 게시글 개수 -->
+	<entry key="selectSoccerCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	</entry>
+	<!--  SOCCER 2차 카테고리 축구공 개수 -->
+		<entry key="selectSoccertpCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO = 11
+	</entry>
+	<!--  SOCCER 2차 카테고리 축구화 개수 -->
+		<entry key="selectSoccermdCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO = 12
+	</entry>
+	<!--  SOCCER 2차 카테고리 보호장비 개수 -->
+		<entry key="selectSoccerbtCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO = 13
+	</entry>
+	<!--  BOLING 2차 카테고리 총개수 -->
+	<entry key="selectBolingCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =20
+	</entry>
+		<!--  BOLING 2차 카테고리  볼링공 개수 -->
+	<entry key="selectBolingtpCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =20
+	  AND CATE_SNO = ?
+	</entry>
+		<!--  BOLING 2차 카테고리 볼링화 개수 -->
+
+	<!--  HEALTH 2차 카테고리 총 개수 -->
+		<entry key="selectHealthCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =30
+	</entry>
+		<!--  HEALTH 2차 카테고리 헬스 개수 -->
+		<entry key="selectHealthtpCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =30
+	  AND CATE_SNO =?
+	</entry>
+	<!--  CYCLE 2차 카테고리 총 개수 -->
+		<entry key="selectCycleCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =40
+	</entry>
+		<!--  CYCLE 2차 카테고리 자전거 개수 -->
+		<entry key="selectCycletpCount">
+		SELECT COUNT(PRO_NO) COUNT
+		FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =40
+	  AND CATE_SNO =?
+	</entry>
+
+	<!--  SOCCER 2차 카테고리 총 상품 -->
+	<entry key="selectsoccer">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+		<!--  SOCCER 2차 카테고리 TOP 상품 -->
+	<entry key="selecttpsoccer">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO =11
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+		<!--  SOCCER 2차 카테고리 MIDDLE 상품 -->
+	<entry key="selectmdsoccer">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO =12
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+		<!--  SOCCER 2차 카테고리 BOTTOM 상품 -->
+	<entry key="selectbtsoccer">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =10
+	  AND CATE_SNO =13
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+	<!--  BOLING 2차 카테고리 총 상품 -->
+	<entry key="selectboling">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =20
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+	
+		<!--  BOLING 2차 카테고리 TOP 상품 -->
+	<entry key="selecttpboling">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =20
+	  AND CATE_SNO =?
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+
+	<!--  HEALTH 2차 카테고리 BOTTOM 상품 -->
+	<entry key="selecthealth">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =30
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+	
+		<!--  HEALTH 2차 카테고리 TOP 상품 -->
+	<entry key="selecttphealth">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =30
+	  AND CATE_SNO =?
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+
+	<!--  CYCLE 2차 카테고리 BOTTOM 상품 -->
+	<entry key="selectcycle">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =40
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+		<!--  CYCLE 2차 카테고리 TOP 상품 -->
+	<entry key="selecttpcycle">
+	SELECT*
+  		 FROM(
+      		 SELECT ROWNUM RNUM,A.*
+      		 FROM
+       		(
+		SELECT PRO_NO
+	        ,PRO_NAME
+	        ,PRO_PRICE
+	        ,PRO_IMAGE
+	        ,CATE_BNO
+	        ,CATE_SNO
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND CATE_BNO =40
+	  AND CATE_SNO = ?
+	 				 ) A
+	        	)	
+	        	WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+	<entry key="detailselect">
+			SELECT *
+	  FROM PRODUCT
+	  WHERE PRO_STATUS = 'N'
+	  AND SELL_STAT ='Y'
+	  AND PRO_NO = ?
+	</entry>
+</properties>
